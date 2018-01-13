@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ user }}{% endblock %}
+
+{% block content %}
+    <div class="container">
+    <h3>{{ user }}</h3>
+     <div class="list-group">
+          {% for bookmark in bookmarks %}
+            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start mb-3">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">{{ bookmark.name }}</h5>
+                        <small>{{ bookmark.date_time_posted }}</small>
+                </div>
+            {% for tags in bookmark.tags.all %}
+                <small class="btn btn-sm btn-outline-primary">{{ tags.name }}</small>
+            {% endfor %}
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

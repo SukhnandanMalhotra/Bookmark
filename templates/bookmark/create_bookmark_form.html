@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %} Create Bookmark {% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <h3>Add Bookmark</h3>
+                <form action="{% url 'create-bookmark' %}" method = 'post'>
+                {% csrf_token %}
+                    {% for field in form %}
+                    <div class="form-group">
+                        {{ field.label_tag }}
+                        {{ field }}
+                    </div>
+                
+                    {% endfor %}
+                <button type="submit" class = " btn btn-primary" >Add Bookmark</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}
